@@ -1,0 +1,39 @@
+{
+  "name": "ahmed-khaled-portfolio",
+  "version": "1.0.0",
+  "description": "Modern portfolio website for Ahmed Khaled Ali - Data Scientist & ML Engineer",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "npx live-server .",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "echo 'Deploy to Render via GitHub integration'"
+  },
+  "keywords": [
+    "portfolio",
+    "data-science",
+    "machine-learning",
+    "ai",
+    "python",
+    "web-development"
+  ],
+  "author": {
+    "name": "Ahmed Khaled Ali",
+    "email": "phoniex199940@gmail.com",
+    "url": "https://phoenixak.me"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Phoenixak/portfolio"
+  },
+  "homepage": "https://phoenixak.me",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
