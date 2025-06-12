@@ -608,9 +608,6 @@ function trackEvent(category, action, label) {
         });
     }
     
-    console.log(`Event tracked: ${category} - ${action} - ${label}`);
-}
-
 // Track navigation clicks
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
