@@ -607,6 +607,7 @@ function trackEvent(category, action, label) {
             event_label: label
         });
     }
+} 
     
 // Track navigation clicks
 navLinks.forEach(link => {
