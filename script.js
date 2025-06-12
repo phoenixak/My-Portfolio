@@ -397,40 +397,51 @@ function initCopyEmail() {
     });
 }
 
-// Theme toggle (optional feature)
+// Ghost Theme Toggle
 function initThemeToggle() {
-    const themeToggle = document.createElement('button');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    themeToggle.className = 'theme-toggle';
-    themeToggle.style.cssText = `
-        position: fixed;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        cursor: pointer;
-        z-index: 1000;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        display: none; /* Hidden by default - can be enabled */
-    `;
+    const themeToggle = document.getElementById('theme-toggle');
     
-    document.body.appendChild(themeToggle);
+    if (!themeToggle) return;
+    
+    // Check for saved theme preference or default to 'light' mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update ghost appearance based on current theme
+    updateGhostAppearance(currentTheme);
     
     themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        const icon = themeToggle.querySelector('i');
-        if (document.body.classList.contains('dark-theme')) {
-            icon.className = 'fas fa-sun';
-        } else {
-            icon.className = 'fas fa-moon';
-        }
+        // Toggle theme
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Apply new theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update ghost appearance with animation
+        updateGhostAppearance(newTheme);
+        
+        // Add a little bounce animation to the button
+        themeToggle.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            themeToggle.style.transform = 'scale(1)';
+        }, 150);
+        
+        // Track the theme change
+        trackEvent('Theme', 'Toggle', newTheme);
     });
+}
+
+function updateGhostAppearance(theme) {
+    const ghostIcon = document.querySelector('.ghost-icon');
+    if (!ghostIcon) return;
+    
+    // Add a subtle rotation animation when switching
+    ghostIcon.style.transform = 'rotate(10deg)';
+    setTimeout(() => {
+        ghostIcon.style.transform = 'rotate(0deg)';
+    }, 300);
 }
 
 // Back to top button
@@ -545,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     initProjectCards();
     initCopyEmail();
-    // initThemeToggle(); // Uncomment if you want theme toggle
+    initThemeToggle(); // Ghost theme toggle enabled!
     initBackToTop();
     
     // Add some delay to typing animation

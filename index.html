@@ -57,10 +57,46 @@
                 <a href="#certifications" class="nav-link">Certifications</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="ghost-icon" viewBox="0 0 100 120" width="28" height="32">
+                        <defs>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge> 
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Ghost body -->
+                        <path class="ghost-body" d="M50 20 
+                                 C30 20, 20 35, 20 50
+                                 L20 85
+                                 C20 90, 25 95, 30 95
+                                 L35 90 L40 95 L45 90 L50 95 L55 90 L60 95 L65 90 L70 95
+                                 C75 95, 80 90, 80 85
+                                 L80 50
+                                 C80 35, 70 20, 50 20 Z"/>
+                        <!-- Ghost eyes -->
+                        <circle class="ghost-eye left-eye" cx="40" cy="45" r="4"/>
+                        <circle class="ghost-eye right-eye" cx="60" cy="45" r="4"/>
+                        <!-- Ghost mouth -->
+                        <ellipse class="ghost-mouth" cx="50" cy="55" rx="3" ry="2"/>
+                        <!-- Sparkles for lit state -->
+                        <g class="sparkles">
+                            <circle class="sparkle" cx="25" cy="30" r="1"/>
+                            <circle class="sparkle" cx="75" cy="35" r="1"/>
+                            <circle class="sparkle" cx="85" cy="55" r="1"/>
+                            <circle class="sparkle" cx="15" cy="65" r="1"/>
+                        </g>
+                    </svg>
+                </button>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
